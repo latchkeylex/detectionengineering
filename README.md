@@ -1,5 +1,5 @@
 # Network Monitoring, Security Testing, and SIEM Implementation
-![Cloud Honeynet / SOC](https://docs.google.com/drawings/d/e/2PACX-1vQlf6JkCcMwXWq2LWWQAZniB1o0Q8zOZ8YyfQX6tfYgshRBHAhe4jLI9v2ZfufrcdsfJMqkF-Latgpe/pub?w=960&h=720)
+![Detection Engineering / SOC](https://docs.google.com/drawings/d/e/2PACX-1vQlf6JkCcMwXWq2LWWQAZniB1o0Q8zOZ8YyfQX6tfYgshRBHAhe4jLI9v2ZfufrcdsfJMqkF-Latgpe/pub?w=960&h=720)
 
 ## Introduction
 
