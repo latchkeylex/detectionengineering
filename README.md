@@ -15,8 +15,8 @@ Designed and implemented a network monitoring solution using Zeek on an Ubuntu V
 ## Attack Scenario 1
 ![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vS7tQuuYhOwpr3IlI2Uq00ef5vEIgyZZU954Z1rJR920bUkwW0pp12TQdETXnQE2NQUM5dIYmJM-9Tj/pub?w=960&h=720)
 
-## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+## Attack Scenario 2
+![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vSsTfyoQPPKpBbPp0TCB10qKyUGELqnJj4YBoqS9aWliFM2CD92BVm2tUMCnF6ML8Cdu-pp1VMruHY8/pub?w=960&h=720)
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
