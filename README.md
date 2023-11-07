@@ -9,7 +9,7 @@ Designed and implemented a network monitoring solution using Zeek on an Ubuntu V
 - Virtual Machines (Windows 11, Ubuntu, ParrotOS)
 - Zeek
 - Sysmon
-- ElasticAgent
+- Elastic
 - Nmap, ZAP, Nikto
 
 ## Attack Scenario 1
