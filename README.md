@@ -10,7 +10,7 @@ Designed and implemented a network monitoring solution using Zeek on an Ubuntu V
 - Zeek
 - Sysmon
 - ElasticAgent
-- Nmap, OWASPZAP
+- Nmap, OWASPZAP, Nikto
 
 ## Architecture Before Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
