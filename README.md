@@ -5,11 +5,12 @@
 
 Designed and implemented a network monitoring solution using Zeek on an Ubuntu VM for real-time traffic analysis. Conducted ethical hacking and security testing on Windows 11 systems, specializing in keylogging, nmap scans, and OWASP ZAP assessments. Configured Windows 11 machines with Sysmon to strengthen log analysis capabilities. Established an Elastic Stack-based SIEM system for centralized log aggregation, enhancing network security and threat detection. Crafted advanced queries, searches, and alerts, including threshold alerts, to facilitate detailed traffic monitoring. Meticulously applied MITRE rules to detections for precise categorization. Additionally, executed atomic tests with the Atomic Red Team framework and contributed to the development of custom tests, demonstrating a commitment to comprehensive security testing and threat detection.
 
-- SecurityEvent (Windows Event Logs)
-- Syslog (Linux Event Logs)
-- SecurityAlert (Log Analytics Alerts Triggered)
-- SecurityIncident (Incidents created by Sentinel)
-- AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
+- VirtualBox
+- Virtual Machines (Windows 11, Ubuntu, ParrotOS)
+- Zeek
+- Sysmon
+- ElasticAgent
+- Nmap, OWASPZAP
 
 ## Architecture Before Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
@@ -19,9 +20,8 @@ Designed and implemented a network monitoring solution using Zeek on an Ubuntu V
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
-- Virtual Network (VNet)
-- Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
+- VirtualBox
+- Virtual Machines (Windows 11, Ubuntu, ParrotOS)
 - Log Analytics Workspace
 - Azure Key Vault
 - Azure Storage Account
