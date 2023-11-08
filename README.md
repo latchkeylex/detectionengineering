@@ -61,7 +61,7 @@ These steps served as prerequisites for launching the lab. Once everything was i
 ![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vSsTfyoQPPKpBbPp0TCB10qKyUGELqnJj4YBoqS9aWliFM2CD92BVm2tUMCnF6ML8Cdu-pp1VMruHY8/pub?w=960&h=720)
 
 ## Attack Scenario 2 Step by Step
-Summary. The droppers purpose is to see if we have windows defender enabled or not on our machine. There is nothing malicious about the file. If the defender is enabled, the dropper isnt going to go and download the return shell. We want to be sneaky, so were trying to say download the dropper, execute it, but only download the malicious return shell if defender is disabled. 
+The droppers purpose is to see if we have windows defender enabled or not on our machine. There is nothing malicious about the file. If the defender is enabled, the dropper isnt going to go and download the return shell. We want to be sneaky, so were trying to say download the dropper, execute it, but only download the malicious return shell if defender is disabled. 
 Then we execute that downloaded return shell, then check out logs in elastic, create some detections and rerun the test. 
 Overlaying the detections were going to create, were gonna have a detection on the inital dropper thats downloaded, on the return shell thats downloaded, and the shell execution. 
 
