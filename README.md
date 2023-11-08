@@ -3,8 +3,7 @@
 
 ## Introduction
 
-Designed and implemented a network monitoring solution using Zeek on an Ubuntu VM for real-time traffic analysis. Conducted ethical hacking and security testing on Windows 11 systems, specializing in keylogging, nmap scans, and OWASP ZAP assessments. Configured Windows 11 machines with Sysmon to strengthen log analysis capabilities. Established an Elastic Stack-based SIEM system for centralized log aggregation, enhancing network security and threat detection. Crafted advanced queries, searches, and alerts, including threshold alerts, to facilitate detailed traffic monitoring. Meticulously applied MITRE rules to detections for precise categorization. Additionally, executed atomic tests with the Atomic Red Team framework and contributed to the development of custom tests, demonstrating a commitment to comprehensive security testing and threat detection.
-
+Designed and implemented a network monitoring solution using Zeek on an Ubuntu VM for real-time traffic analysis. Conducted ethical hacking and security testing on Windows 11 systems, specializing in keylogging, nmap scans, and OWASP ZAP assessments. Configured Windows 11 machines with Sysmon to strengthen log analysis capabilities. Established an Elastic Stack-based SIEM system for centralized log aggregation, enhancing network security and threat detection. Crafted advanced queries, searches, and alerts, including threshold alerts, to facilitate detailed traffic monitoring. Meticulously applied MITRE rules to detections for precise categorization.
 - VirtualBox
 - Virtual Machines (Windows 11, Ubuntu, ParrotOS)
 - Zeek
@@ -16,7 +15,11 @@ Designed and implemented a network monitoring solution using Zeek on an Ubuntu V
 - Command Line Interface (CLI)
 
 ## Begin Lab Setup
-
+To set up the lab, I began by installing the mentioned virtual machines using VirtualBox. I created a default snapshot (in VBox) to save their initial, unaltered state. Next, I disabled Windows Defender to enhance the lab environment capabilties. Following that, I installed Zeek on our Ubuntu machine to monitor network traffic.
+Afterward, I registered for a trial version of Elastic and integrated Agents into my Windows and Ubuntu machines through Zeek. To validate Elastic Agent Logging on Windows, I conducted tests using an EICAR file and PowerShell.
+Additionally, I installed and configured Sysmon to improve logging capabilities. It's important to have quality data in both Elastic Agent and Sysmon, as they complement each other. You can utilize both rather than relying solely on one. Ensure Windows integration via Elastic to install the Agent on the Windows machine.
+Finally, I performed tests with the EICAR file and enabled module logging, PowerShell script block logging, allowed all scripts for script execution, and activated PowerShell transcription. 
+These steps served as prerequisites for launching the lab. Once everything was installed and set up, we were ready to initiate our first attack scenario.
 
 
 ## Attack Scenario 1
