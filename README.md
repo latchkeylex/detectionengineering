@@ -25,7 +25,7 @@ These steps served as prerequisites for launching the lab. Once everything was i
 ## Attack Scenario 1 Diagram
 ![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vS7tQuuYhOwpr3IlI2Uq00ef5vEIgyZZU954Z1rJR920bUkwW0pp12TQdETXnQE2NQUM5dIYmJM-9Tj/pub?w=960&h=720)
 
-## Attack Scenario 1 Step by Step
+## Attack Scenario 1 - Step by Step
 1. Deploy Zeek on our Ubuntu machine
 2. Initiate Python HTTP server on Windows machine
 3. In a new PowerShell tab, create a file named "testfile.txt"
@@ -60,7 +60,7 @@ These steps served as prerequisites for launching the lab. Once everything was i
 ## Attack Scenario 2
 ![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vSsTfyoQPPKpBbPp0TCB10qKyUGELqnJj4YBoqS9aWliFM2CD92BVm2tUMCnF6ML8Cdu-pp1VMruHY8/pub?w=960&h=720)
 
-## Attack Scenario 2 Step by Step
+## Attack Scenario 2 - Step by Step
 The droppers purpose is to see if we have windows defender enabled or not on our machine. There is nothing malicious about the file. If the defender is enabled, the dropper isnt going to go and download the return shell. We want to be sneaky, so were trying to say download the dropper, execute it, but only download the malicious return shell if defender is disabled. 
 Then we execute that downloaded return shell, then check out logs in elastic, create some detections and rerun the test. 
 Overlaying the detections were going to create, were gonna have a detection on the inital dropper thats downloaded, on the return shell thats downloaded, and the shell execution. 
@@ -97,8 +97,53 @@ Overlaying the detections were going to create, were gonna have a detection on t
 30. Ta-Da... Great success!
 31. Lastly, navigate to Elastic and filter our documents for any trace of our attack scenarios
 32. We can filter for sysmon results by clicking the '+' on the event.dataset field. Expand the 'sysmon' field
-33. We changed our filters to look for relevant fields (process.command_line, process.parent.command_line, and process.parent.name). We will see 'shell.bat', our msfvenom payload text, powershell.exe, and more!
+33. We changed our filters to look for relevant fields (process.command_line, process.parent.command_line, and process.parent.name). We will see 'shell.bat', our msfvenom payload text, powershell.exe, and more
 34. Here you can see the 'shell.bat'. This is the Metasploit reverse shell payload expanded
+35. Now it's time to create our alerts in Elastic. We will be searching for key pieces of a payload and specifically define those pieces in alerts to help be more specific
+
+## Attack Scenario 2 - Creating our Alerts
+We will be creating 4 alerts:
+1. .bat files being detected in http data on unusual ports, bascially anything that's not port 80
+2. Shell execution via a .bat file
+3. InvokeWebRequest function of PowerShell downloading a .bat file
+4. msfvenom .bat PowerShell return shell
+
+Lets get started on our first alert!
+
+1. First, lets run our basic 'event.dataset: zeek.http' query to help us filter inital results. In this instance, we're choosing timestamp, url.extension, and destination.port. You can see it is returning bat files...
+2. Lets optimize our query. Query for url.extension: bat (for bat files) and any port that is NOT port 80
+3. Time to make the custom query rule. Copy and paste our KQL query. Surpress alerts by source.ip for a time period of every 5 minutes
+4. Name and describe the rule, then set MITRE specifications. That should do it for our first query!
+
+Second Alert:
+
+6. Our second query will be filtering for sysmon activity. Look at the query in the search bar to see what we are filtering for... We're looking for windows.sysmon, with a command line process of PowerShell, a parent process name of bat and cmd.exe
+7. Lets make our rule based on this custom query. This time surpress by hostname
+8. Name and describe your alert
+9. Set your MITRE specifications and you're done
+
+Third Alert:
+
+10. For this query, we're using sysmon data to trigger PowerShell logs where InvokeWebRequest and .bat strings are observed  
+11. Time to create an alert for our query. Continue to surpress by hostname
+12. Name and describe our alert
+13. Set MITRE parameters
+
+Fourth Alert:
+
+14. Analyze the reverse shell payload. Look for any string(s) that might be unique in identifying this form of attack/payload. In this case, we'll use '-nop -c $a'
+15. Reference the query to see what it is we're filtering for...
+16. For the final time, let's create our alert. Surpress alerts by 'hostname'
+17. Name and describe the rule
+18. Set MITRE details and we're finally done with creating our alerts!
+
+Confirming our Detections:
+
+We must confirm our detections to see if our rules were configured correctly to assist us in defending against future atacks. If you re-run all of the attacks, you should see your alerts begin to surface, in due time. If you would like to see them appear sooner, change the time interval in which the alert is ran (if you did every 5 minutes, change it to every minute). This will help expedite the waiting process. You can also analyze the stages of the attack.
+
+That just about sums it up for our Detection Engineering lab. I hope I explained everything in a palletable fashion. Now it's time for you to tamper with the lab. Try and run unqiue attacks. Try and break things... :D
+
+
 
 
 
